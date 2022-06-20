@@ -1,12 +1,16 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Button, TextField } from '@mui/material'
+import { LoginForm } from './LoginForm'
 import { useLoginFormik } from '../../lib/hooks/useLoginFormik'
-
-const Login = () => {
-
+interface Props{
+  onLogin: (username: string) => void;
+}
+const Login = (props:Props) => {
+  
   const formik = useLoginFormik({
-    onSubmit(values, formikHelpers){
-      console.info("values", values);
+    onSubmit: (values) => {
+      //console.info("values", values);
+      props.onLogin(values.username);
     }
   })
 
@@ -14,17 +18,9 @@ const Login = () => {
     <div style={{
         margin:"50px"
     }} >
-      <form onSubmit={formik.handleSubmit} style={{
-        display:"flex",
-        flexDirection:"column",
-        rowGap:"20px",
-        width:"400px"
-    }} >
-        <h1>Login </h1>
-        <TextField label="Username" />
-        <TextField label="Password" type="password" autoComplete='current-password' />
-        <Button type="submit" variant="contained" >Log in </Button>
-        </form>
+      <LoginForm formik={formik} />
+      
+      
     </div>
   )
 }

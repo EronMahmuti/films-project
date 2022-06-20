@@ -11,7 +11,6 @@ const LoginSchema = Yup.object().shape({
 export interface LoginFields{
     username: string;
     password: string;
-
 }
 
 interface UseLoginFormOptions{
@@ -25,7 +24,7 @@ export const useLoginFormik = (props: UseLoginFormOptions ) => {
     return useFormik({
         initialValues:{
             username:"",
-            password:"check-password",
+            password:"",
         },
         //validateOnBlur: false,
         //validateOnChange: true,
