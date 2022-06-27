@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+import { NavLink } from "react-router-dom";
 import { useAuthContext } from '../../lib/context/AuthContext/AuthContext';
 
 interface Props {
@@ -35,8 +36,12 @@ export const Header = () => {
                      columnGap: "30px",
                   }}
                >
-                  <li>My Movies</li>
-                  <li>My Profile</li>
+                  <li style={{
+                        cursor: "pointer",
+                     }}><NavLink to="register" > Register </NavLink></li>
+                  <li style={{
+                        cursor: "pointer",
+                     }} > <NavLink to="my-profile" > My Profile </NavLink></li>
                   <li
                      onClick={authContext.onLogOut}
                      style={{

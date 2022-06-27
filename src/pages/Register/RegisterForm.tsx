@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, TextField } from '@mui/material'
+import { Box, Button, MenuItem, Select, TextField,InputLabel } from '@mui/material'
 import { RegisterFormik } from '../../lib/hooks/useRegisterFormik'
 
 interface Props {
@@ -45,6 +45,32 @@ export const RegisterForm = ({formik}: Props) => {
                     <Box sx={{color:"red", fontSize:"12px"}} > {formik.errors.email} </Box>
                 )}
                 <TextField 
+                label="Password" 
+                type="password"
+                name="password"
+                onChange={formik.handleChange} value={formik.values.password}
+                error={
+                    Boolean(formik.errors.password) && formik.touched.password
+                }/>
+                {formik.errors.password && 
+                formik.touched.password && 
+                (
+                    <Box sx={{color:"red", fontSize:"12px"}} > {formik.errors.password} </Box>
+                )}
+                <TextField 
+                label="Confirm-Password" 
+                type="password"
+                name="confirmPassword"
+                onChange={formik.handleChange} value={formik.values.confirmPassword}
+                error={
+                    Boolean(formik.errors.confirmPassword) && formik.touched.confirmPassword
+                }/>
+                {formik.errors.confirmPassword && 
+                formik.touched.confirmPassword && 
+                (
+                    <Box sx={{color:"red", fontSize:"12px"}} > {formik.errors.confirmPassword} </Box>
+                )}
+                <TextField 
                 label="Age" 
                 type="text"
                 name="age"
@@ -57,27 +83,36 @@ export const RegisterForm = ({formik}: Props) => {
                 (
                     <Box sx={{color:"red", fontSize:"12px"}} > {formik.errors.age} </Box>
                 )}
-                <TextField 
-                label="Gender" 
-                type="text"
+                
+                <Select
                 name="gender"
                 onChange={formik.handleChange} value={formik.values.gender}
                 error={
                     Boolean(formik.errors.gender) && formik.touched.gender
-                }/>
+                    
+                }
+                label="Gender">
                 {formik.errors.gender && 
                 formik.touched.gender && 
                 (
                     <Box sx={{color:"red", fontSize:"12px"}} > {formik.errors.gender} </Box>
                 )}
-                <TextField 
-                label="Preferences" 
-                type="text"
-                name="preferences"
-                onChange={formik.handleChange} value={formik.values.preferences}
-                error={
-                    Boolean(formik.errors.preferences) && formik.touched.preferences
-                }/>
+                <MenuItem value={"Male"} >Male</MenuItem>
+                    <MenuItem value={"Female"} >Female</MenuItem>
+                </Select>
+                <Select 
+                    label="Preferences"
+                    name="preferences"
+                    onChange={formik.handleChange} value={formik.values.preferences}
+                    error={
+                        Boolean(formik.errors.preferences) && formik.touched.preferences
+                    }>
+                    <MenuItem value={"Action"} >Action</MenuItem>
+                    <MenuItem value={"Comedy"} >Comedy</MenuItem>
+                    <MenuItem value={"Sci-Fi"} >Sci-Fi</MenuItem>
+                    <MenuItem value={"Drama"} >Drama</MenuItem>
+                    <MenuItem value={"Thriller"} >Thriller</MenuItem>
+                </Select>
                 {formik.errors.preferences && 
                 formik.touched.preferences && 
                 (
