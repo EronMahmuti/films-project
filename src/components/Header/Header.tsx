@@ -1,11 +1,9 @@
 import { Box } from "@mui/material";
-import { useAuthContext } from '../../lib/context/AuthContext/AuthContext';
-
+import {Link} from 'react-router-dom'
 interface Props {
    onLogOut: () => void;
 }
-export const Header = () => {
-   const authContext = useAuthContext();
+export const Header = (props: Props) => {
    return (
       <div>
          <Box
@@ -16,15 +14,14 @@ export const Header = () => {
                justifyContent: "space-between",
                padding: "0 20px",
                position: "fixed",
-               width: "100%",
+               width: "95%",
                zIndex: (theme) => theme.zIndex.drawer + 1,
                backgroundColor: "#fff",
                borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
-               boxSizing:"border-box"
             }}
          >
             <div className="logo">
-               <h2>Films Logo</h2>
+               <h2>Films Loooogo</h2>
             </div>
             <nav>
                <Box
@@ -35,14 +32,17 @@ export const Header = () => {
                      columnGap: "30px",
                   }}
                >
-                  <li>My Movies</li>
-                  <li>My Profile</li>
+                  <li style={{
+                        cursor: "pointer",
+                     }}><Link to="/movies"> My Movies </Link> </li>
+                  <li style={{
+                        cursor: "pointer",
+                     }}> <Link to="/my-profile"> Mys Profile-1 </Link> </li>
                   <li
-                     onClick={authContext.onLogOut}
+                     onClick={props.onLogOut}
                      style={{
                         cursor: "pointer",
-                     }}
-                  >
+                     }}>
                      Logout
                   </li>
                </Box>

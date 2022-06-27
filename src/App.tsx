@@ -1,26 +1,25 @@
-import React,{useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Login from './components/Login/Login';
-import Home from './components/Home/Home'
+import Login from './pages/Login/Login';
+import Home from './pages/Home/Home'
+//import { useAuthContext } from './lib/context/AuthContext/AuthContext';
+import { Routes, Route } from 'react-router-dom';
+import { MyProfile } from './pages/MyProfile/MyProfile';
+import { Register } from './pages/Register/Register';
 
 
 function App() {
-  const [user, setUser] = useState<string | null>(() => {
-    const value = localStorage.getItem("user");
-    return value;
-  })
-  
-  const handleLogin = (username:string) => {
-    setUser(username)
-    localStorage.setItem("user",username);
-  }
-  const handleLogout = () => {
-    setUser(null)
-    localStorage.remove("user");
-  }
+  //const authContext = useAuthContext();
 
-  return  user !== null ? <Home user={user} onLogout={handleLogout} /> : <Login onLogin={handleLogin}  />
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/my-profile" element={<MyProfile />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  )
+  // return  authContext.user !== null ? <Home /> : <Login />
+
 }
 
 export default App;
