@@ -6,9 +6,10 @@ import {
   ListItemText,
   Toolbar,
 } from "@mui/material";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../../App.css"
 
-export const Sidebar = () => {
+export const ProfileSidebar = () => {
   return (
     <Drawer
       variant="permanent"
@@ -20,29 +21,28 @@ export const Sidebar = () => {
       }}
     >
       <Toolbar />
-
       <List
         sx={{
           marginTop: "10px",
+          textDecoration: "none",
         }}
       >
-        <Link className="sidebar_links" to="posts">
+        <Link className="sidebar_links" to="account">
           <ListItemButton>
-            <ListItem>Posts</ListItem>
+            <ListItem>Account</ListItem>
           </ListItemButton>
         </Link>
-        <Link className="sidebar_links" to="comments">
+        <Link className="sidebar_links" to="privacy">
           <ListItemButton>
-            <ListItem>Comments</ListItem>
+            <ListItem>Password</ListItem>
           </ListItemButton>
         </Link>
-        <Link className="sidebar_links" to="photos">
+        <Link className="sidebar_links" to="deactivate">
           <ListItemButton>
-            <ListItem>Photos</ListItem>
+            <ListItem>Deactivate Account</ListItem>
           </ListItemButton>
         </Link>
       </List>
-      <Outlet />
     </Drawer>
   );
 };

@@ -29,7 +29,7 @@ export interface RegisterFields {
   confirmPassword: string;
   age: string;
   gender: string;
-  preferences: string[];
+  preferences: string;
 }
 
 interface UseRegisterFormOptions {
@@ -40,7 +40,7 @@ interface UseRegisterFormOptions {
 }
 
 export const useRegisterFormik = (props: UseRegisterFormOptions) => {
-  return useFormik<RegisterFields>({
+  return useFormik({
     initialValues: {
       username: "",
       email: "",
@@ -48,7 +48,7 @@ export const useRegisterFormik = (props: UseRegisterFormOptions) => {
       confirmPassword: "",
       age: "",
       gender: "",
-      preferences: [],
+      preferences: "",
     },
     validateOnBlur: true,
     validateOnChange: true,
@@ -58,3 +58,6 @@ export const useRegisterFormik = (props: UseRegisterFormOptions) => {
 };
 
 export type RegisterFormik = ReturnType<typeof useRegisterFormik>;
+
+
+

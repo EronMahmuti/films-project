@@ -18,17 +18,24 @@ interface Props {
 
 export const RegisterForm = ({ formik }: Props) => {
   return (
-    <div>
-      <form
-        onSubmit={formik.handleSubmit}
+    <>
+      <h2 style={{ textAlign: "center" }}>Register User</h2>
+      <div
         style={{
           display: "flex",
-          flexDirection: "column",
-          rowGap: "20px",
-          width: "400px",
+          justifyContent: "center",
         }}
       >
-        <div>
+        <form
+          onSubmit={formik.handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            rowGap: "20px",
+            width: "400px",
+            justifyContent: "center",
+          }}
+        >
           <TextField
             label="Username"
             type="text"
@@ -38,8 +45,6 @@ export const RegisterForm = ({ formik }: Props) => {
             error={Boolean(formik.errors.username) && formik.touched.username}
             helperText={formik.touched.username && formik.errors.username}
           />
-        </div>
-        <div>
           <TextField
             label="Email"
             type="email"
@@ -49,8 +54,6 @@ export const RegisterForm = ({ formik }: Props) => {
             error={Boolean(formik.errors.email) && formik.touched.email}
             helperText={formik.touched.email && formik.errors.email}
           />
-        </div>
-        <div>
           <TextField
             label="Password"
             type="password"
@@ -60,8 +63,6 @@ export const RegisterForm = ({ formik }: Props) => {
             error={Boolean(formik.errors.password) && formik.touched.password}
             helperText={formik.touched.password && formik.errors.password}
           />
-        </div>
-        <div>
           <TextField
             label="Confirm-Password"
             type="password"
@@ -76,8 +77,6 @@ export const RegisterForm = ({ formik }: Props) => {
               formik.touched.confirmPassword && formik.errors.confirmPassword
             }
           />
-        </div>
-        <div>
           <TextField
             label="Age"
             type="text"
@@ -87,8 +86,6 @@ export const RegisterForm = ({ formik }: Props) => {
             error={Boolean(formik.errors.age) && formik.touched.age}
             helperText={formik.touched.age && formik.errors.age}
           />
-        </div>
-        <div>
           <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Gender</InputLabel>
             <Select
@@ -108,64 +105,12 @@ export const RegisterForm = ({ formik }: Props) => {
               <MenuItem value={"Female"}>Female</MenuItem>
             </Select>
           </FormControl>
-        </div>
 
-        <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-          <FormControlLabel
-            label="Action"
-            control={
-              <Checkbox
-                value={formik.values.preferences.includes("Action")}
-                onChange={formik.handleChange}
-                name="preferences"
-              />
-            }
-          />
-          <FormControlLabel
-            label="Thriller"
-            control={
-              <Checkbox
-                value={formik.values.preferences.includes("Thriller")}
-                onChange={formik.handleChange}
-                name="preferences"
-              />
-            }
-          />
-          <FormControlLabel
-            label="Drama"
-            control={
-              <Checkbox
-                value={formik.values.preferences.includes("Drama")}
-                onChange={formik.handleChange}
-                name="preferences"
-              />
-            }
-          />
-          <FormControlLabel
-            label="Sci-fi"
-            control={
-              <Checkbox
-                value={formik.values.preferences.includes("Sci-fi")}
-                onChange={formik.handleChange}
-                name="preferences"
-              />
-            }
-          />
-          <FormControlLabel
-            label="Comedy"
-            control={
-              <Checkbox
-                value={formik.values.preferences.includes("Comedy")}
-                onChange={formik.handleChange}
-                name="preferences"
-              />
-            }
-          />
-        </FormControl>
-        <Button type="submit" variant="contained">
-          Register
-        </Button>
-      </form>
-    </div>
+          <Button type="submit" variant="contained">
+            Register
+          </Button>
+        </form>
+      </div>
+    </>
   );
 };

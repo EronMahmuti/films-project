@@ -1,7 +1,6 @@
 import { Box } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../../lib/context/AuthContext/AuthContext";
-import { Wrapper } from "../../lib/Wrapper/Wrapper";
 
 interface Props {
   onLogOut: () => void;
@@ -42,11 +41,9 @@ export const Header = () => {
             }}
           >
             <li>
-              <Wrapper role={["admin", "editor"]}>
-                <NavLink className="header_links" to={authContext.userRole}>
-                  Admin
-                </NavLink>
-              </Wrapper>
+              <NavLink className="header_links" to="/admin">
+                {authContext.userRole}
+              </NavLink>
             </li>
             <li>
               <NavLink className="header_links" to="/">
